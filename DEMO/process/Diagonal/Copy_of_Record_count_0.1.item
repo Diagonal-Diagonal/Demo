@@ -264,7 +264,6 @@
     <metadata connector="FLOW" name="out">
       <column comment="" key="false" length="-1" name="SRC_Table_Name" nullable="true" pattern="" precision="-1" sourceType="VARCHAR2" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="SRC_Record_Count" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TGT_Table_Name" nullable="true" pattern="" precision="-1" sourceType="VARCHAR2" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="TGT_Record_Count" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
@@ -273,15 +272,14 @@
       <outputTables sizeState="INTERMEDIATE" name="out">
         <mapperTableEntries name="SRC_Table_Name" expression="  row6.Table_Name " type="id_String" nullable="true"/>
         <mapperTableEntries name="SRC_Record_Count" expression="row6.Record_Count " type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="TGT_Table_Name" expression="row4.Table_Name " type="id_String" nullable="true"/>
         <mapperTableEntries name="TGT_Record_Count" expression="row4.Record_Count " type="id_Integer" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row6" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="Table_Name" type="id_String" nullable="true"/>
         <mapperTableEntries name="Record_Count" type="id_Integer" nullable="true"/>
       </inputTables>
-      <inputTables sizeState="INTERMEDIATE" name="row4" matchingMode="ALL_ROWS" lookupMode="LOAD_ONCE">
-        <mapperTableEntries name="Table_Name" type="id_String" nullable="true"/>
+      <inputTables sizeState="INTERMEDIATE" name="row4" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="Table_Name" expression="row6.Table_Name " type="id_String" nullable="true" operator="="/>
         <mapperTableEntries name="Record_Count" type="id_Integer" nullable="true"/>
       </inputTables>
     </nodeData>
@@ -457,7 +455,6 @@
     <metadata connector="FLOW" name="tFileOutputDelimited_1">
       <column comment="" key="false" length="-1" name="SRC_Table_Name" nullable="true" pattern="" precision="-1" sourceType="VARCHAR2" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="SRC_Record_Count" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TGT_Table_Name" nullable="true" pattern="" precision="-1" sourceType="VARCHAR2" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="TGT_Record_Count" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
